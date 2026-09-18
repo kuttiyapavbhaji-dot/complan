@@ -1,239 +1,657 @@
+```css
+/* ================================
+   COMPLAINT LOG 🦩
+   Cute Flamingo Theme
+================================ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #fff5f7;
-    color: #2d2527;
-    min-height: 100vh;
-    padding: 40px 20px;
+html {
+    scroll-behavior: smooth;
 }
+
+body {
+    font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    color: #352c35;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.7) 0 2px, transparent 3px),
+        linear-gradient(135deg, #fff0f5, #ffdce7, #ffeaf1);
+
+    background-size: 180px 180px, 230px 230px, 100% 100%;
+    padding: 45px 20px;
+    overflow-x: hidden;
+}
+
+
+/* =================================
+   FLAMINGO BACKGROUND
+================================= */
+
+/* Large scattered flamingo layer */
+body::before {
+    content:
+        "🦩     ♡          🦩"
+        "\A"
+        "       🦩       ♡"
+        "\A"
+        "♡              🦩"
+        "\A"
+        "    🦩             ♡"
+        "\A"
+        "🦩        ♡              🦩"
+        "\A"
+        "        🦩"
+        "\A"
+        "♡              🦩"
+        "\A"
+        "    🦩          ♡";
+
+    white-space: pre;
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    font-size: 48px;
+    line-height: 2.6;
+    letter-spacing: 12px;
+
+    opacity: 0.16;
+    pointer-events: none;
+    user-select: none;
+
+    transform: rotate(-2deg) scale(1.15);
+}
+
+
+/* Smaller decorative layer */
+body::after {
+    content:
+        "♡   ✦       ♡"
+        "\A"
+        "      ✧    ♡"
+        "\A"
+        "♡        ✦"
+        "\A"
+        "   ♡          ✧"
+        "\A"
+        "✦       ♡";
+
+    white-space: pre;
+    position: fixed;
+    right: 15px;
+    top: 80px;
+
+    font-size: 34px;
+    line-height: 3;
+    color: #f06b99;
+
+    opacity: 0.3;
+    pointer-events: none;
+    user-select: none;
+
+    z-index: -1;
+}
+
+
+/* =================================
+   MAIN CONTAINER
+================================= */
 
 .container {
     width: 100%;
-    max-width: 750px;
-    margin: auto;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
 }
 
-/* Header */
+
+/* =================================
+   HEADER
+================================= */
 
 .header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
+    position: relative;
 }
 
 .emoji {
-    font-size: 50px;
-    margin-bottom: 10px;
+    font-size: 58px;
+    margin-bottom: 5px;
+
+    animation: flamingoFloat 3s ease-in-out infinite;
+}
+
+@keyframes flamingoFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(2deg);
+    }
 }
 
 .header h1 {
-    font-size: 42px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 7vw, 58px);
+    font-weight: 700;
+
+    color: #d94f7b;
+
+    text-shadow:
+        2px 2px 0 #fff,
+        0 4px 12px rgba(217, 79, 123, 0.15);
+
     margin-bottom: 12px;
-    color: #d94f70;
+}
+
+.header h1::after {
+    content: " ♡";
+    font-size: 0.6em;
+    color: #f0789e;
 }
 
 .header p {
+    max-width: 600px;
+    margin: 0 auto;
+
+    color: #765f68;
     font-size: 16px;
-    color: #76666a;
+    line-height: 1.6;
+
+    background: rgba(255, 255, 255, 0.55);
+    padding: 8px 18px;
+    border-radius: 50px;
+    width: fit-content;
 }
 
-/* Complaint card */
+
+/* =================================
+   CARDS
+================================= */
+
+.complaint-card,
+.previous-section {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    border: 2px solid rgba(240, 108, 153, 0.28);
+    border-radius: 26px;
+
+    box-shadow:
+        0 20px 50px rgba(177, 78, 111, 0.12),
+        0 4px 12px rgba(177, 78, 111, 0.06);
+
+    backdrop-filter: blur(10px);
+
+    overflow: hidden;
+}
+
+
+/* Cute top accent */
+.complaint-card::before,
+.previous-section::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #f78caf,
+        #ed5d8b,
+        #f7a4bd,
+        #ed5d8b,
+        #f78caf
+    );
+}
+
+
+/* =================================
+   COMPLAINT FORM
+================================= */
 
 .complaint-card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(120, 70, 80, 0.08);
-    margin-bottom: 25px;
+    padding: 35px;
+    margin-bottom: 28px;
 }
 
 .complaint-card h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+
+    color: #3a2c38;
+
     margin-bottom: 25px;
-    color: #d94f70;
 }
 
-/* Form */
+.complaint-card h2::before {
+    content: "🦩 ";
+}
+
+
+/* =================================
+   FORM
+================================= */
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 9px;
 }
 
 label {
-    font-weight: bold;
-    margin-top: 12px;
+    color: #493741;
     font-size: 14px;
+    font-weight: 700;
+
+    margin-top: 12px;
 }
+
+label::before {
+    content: "♡ ";
+    color: #ed6792;
+}
+
+
+/* Inputs */
 
 input,
 textarea,
 select {
     width: 100%;
-    padding: 13px 15px;
-    border: 1px solid #ead6da;
-    border-radius: 10px;
-    background: #fffafb;
-    font-size: 15px;
+
+    padding: 14px 16px;
+
+    border: 2px solid #f0d4dd;
+    border-radius: 13px;
+
+    background: #fffafd;
+
+    color: #3d3238;
+
     font-family: inherit;
+    font-size: 15px;
+
     outline: none;
-    transition: 0.2s;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #b49da5;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: #efa0b9;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-    border-color: #d94f70;
-    box-shadow: 0 0 0 3px rgba(217, 79, 112, 0.1);
+    border-color: #e95e8b;
+
+    box-shadow:
+        0 0 0 4px rgba(233, 94, 139, 0.11),
+        0 5px 15px rgba(233, 94, 139, 0.08);
+
+    transform: translateY(-1px);
 }
 
 textarea {
     resize: vertical;
+    min-height: 140px;
 }
 
-/* Submit button */
+
+/* =================================
+   SUBMIT BUTTON
+================================= */
 
 button {
+    position: relative;
+
     margin-top: 20px;
-    padding: 15px;
+    padding: 15px 20px;
+
     border: none;
-    border-radius: 12px;
-    background: #d94f70;
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #ed6792,
+        #e84f82
+    );
+
     color: white;
+
+    font-family: inherit;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 700;
+
     cursor: pointer;
-    transition: 0.2s;
+
+    box-shadow:
+        0 8px 18px rgba(217, 79, 112, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+button::after {
+    content: " 🦩";
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(217, 79, 112, 0.25);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(217, 79, 112, 0.28);
+
+    filter: brightness(1.04);
 }
 
 button:active {
     transform: translateY(0);
 }
 
-/* Success message */
+
+/* =================================
+   SUCCESS MESSAGE
+================================= */
 
 .success-message {
-    background: #f1fff5;
-    border: 1px solid #bce8c9;
-    padding: 25px;
-    border-radius: 18px;
+    position: relative;
+
+    background: linear-gradient(
+        135deg,
+        #f1fff6,
+        #e8fff1
+    );
+
+    border: 2px solid #b8e8c8;
+    border-radius: 22px;
+
+    padding: 28px;
+
     text-align: center;
-    margin-bottom: 25px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 12px 30px rgba(65, 150, 90, 0.08);
 }
 
 .success-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 42px;
+    margin-bottom: 8px;
+
+    animation: successPop 0.45s ease;
+}
+
+@keyframes successPop {
+
+    0% {
+        transform: scale(0.5);
+    }
+
+    80% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .success-message h2 {
-    color: #29904c;
+    color: #2f9250;
     margin-bottom: 10px;
 }
 
 .success-message p {
     margin: 8px 0;
+    line-height: 1.5;
+}
+
+.success-message strong {
+    color: #2f9250;
 }
 
 .success-message small {
     display: block;
-    margin-top: 15px;
-    color: #607066;
+    margin-top: 13px;
+
+    color: #66776b;
+    line-height: 1.5;
 }
 
 .hidden {
     display: none;
 }
 
-/* Previous complaints */
+
+/* =================================
+   PREVIOUS COMPLAINTS
+================================= */
 
 .previous-section {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(120, 70, 80, 0.08);
+    padding: 35px;
 }
 
 .section-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
 
 .section-title h2 {
-    color: #d94f70;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    color: #3a2c38;
+}
+
+.section-title h2::before {
+    content: "🦩 ";
 }
 
 #complaintCount {
-    background: #fff0f3;
-    color: #d94f70;
-    padding: 7px 12px;
-    border-radius: 20px;
+    background: #ffe2eb;
+    color: #d84f79;
+
+    padding: 8px 14px;
+
+    border-radius: 50px;
+
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 700;
+
+    white-space: nowrap;
 }
 
-/* Empty state */
+
+/* =================================
+   EMPTY STATE
+================================= */
 
 .empty-state {
     text-align: center;
-    padding: 35px 10px;
-    color: #76666a;
+
+    padding: 45px 15px;
+
+    color: #76666d;
+
+    border: 2px dashed #f0ccd8;
+    border-radius: 18px;
+
+    background: rgba(255, 246, 249, 0.65);
 }
 
 .empty-state div {
-    font-size: 40px;
+    font-size: 48px;
     margin-bottom: 10px;
+
+    animation: flamingoFloat 3s ease-in-out infinite;
 }
 
 .empty-state p {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
 .empty-state small {
-    color: #99888c;
+    color: #a38e96;
 }
 
-/* Footer */
+
+/* =================================
+   COMPLAINT CARDS CREATED BY JS
+================================= */
+
+/*
+   Your JavaScript creates inline styles
+   for complaint cards, so these rules
+   mainly improve their appearance.
+*/
+
+#complaintsList > div:not(.empty-state) {
+    border-left: 5px solid #ef7198 !important;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#complaintsList > div:not(.empty-state):hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 22px rgba(190, 90, 120, 0.1);
+}
+
+
+/* =================================
+   FOOTER
+================================= */
 
 footer {
     text-align: center;
-    margin-top: 25px;
-    color: #9b858a;
+
+    margin-top: 28px;
+    padding: 5px;
+
+    color: #a47787;
+
     font-size: 13px;
 }
 
-/* Mobile */
+footer::before {
+    content: "🦩 ";
+}
 
-@media (max-width: 600px) {
+footer::after {
+    content: " ♡";
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
 
     body {
         padding: 25px 12px;
     }
 
+    .header {
+        margin-bottom: 24px;
+    }
+
     .header h1 {
-        font-size: 32px;
+        font-size: 38px;
+    }
+
+    .header p {
+        font-size: 14px;
+        border-radius: 18px;
     }
 
     .complaint-card,
     .previous-section {
-        padding: 20px;
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .complaint-card h2,
+    .section-title h2 {
+        font-size: 24px;
     }
 
     .section-title {
-        flex-direction: column;
         align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #complaintCount {
+        align-self: flex-start;
+    }
+
+    body::before {
+        font-size: 36px;
+        line-height: 3;
+        letter-spacing: 5px;
     }
 }
+
+
+/* =================================
+   EXTRA SMALL SCREENS
+================================= */
+
+@media (max-width: 400px) {
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .emoji {
+        font-size: 48px;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}
+```
