@@ -1,1 +1,144 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Log</title>
+
+```
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<main class="container">
+
+    <section class="header">
+        <div class="emoji">💌</div>
+
+        <h1>Complaint Log</h1>
+
+        <p>
+            Incase I do some dumbassery, you can lmk here and keep a log
+        </p>
+    </section>
+
+
+    <section class="complaint-card">
+
+        <h2>🚨 File a Complaint</h2>
+
+        <form id="complaintForm">
+
+            <label for="category">What kind of crime was committed?</label>
+
+            <select id="category" required>
+                <option value="">Select a category</option>
+                <option value="communicate kar kutte">communicate kar kutte</option>
+                <option value="mujhe gandi cheez mat sikha">mujhe gandi cheez mat sikha</option>
+                <option value="yaar kyu kharaab bolta tu">yaar kyu kharaab bolta tu</option>
+                <option value="where are u">where are u</option>
+                <option value="aise hi">aise hi</option>
+            </select>
+
+
+            <label for="title">Complaint title</label>
+
+            <input
+                type="text"
+                id="title"
+                placeholder="e.g. You didn't text me back 😡"
+                maxlength="100"
+                required
+            >
+
+
+            <label for="description">Tell me what happened</label>
+
+            <textarea
+                id="description"
+                placeholder="sahi se batao"
+                rows="6"
+                maxlength="1000"
+                required
+            ></textarea>
+
+
+            <label for="severity">How serious is this?</label>
+
+            <select id="severity" required>
+                <option value="">Select severity</option>
+                <option value="Minor">Minor</option>
+                <option value="Major">Major</option>
+            </select>
+
+
+            <button type="submit">
+                🚨 Submit Complaint
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section id="successMessage" class="success-message hidden">
+
+        <div class="success-icon">✅</div>
+
+        <h2>Complaint Submitted!</h2>
+
+        <p>
+            Your complaint has been successfully registered.
+        </p>
+
+        <p>
+            <strong>Notification status: ✅ DELIVERED</strong>
+        </p>
+
+        <small>
+            ill be notified soon enough, hopefully work kare backend
+        </small>
+
+    </section>
+
+
+    <section class="previous-section">
+
+        <div class="section-title">
+            <h2>📋 Previous Complaints</h2>
+
+            <span id="complaintCount">0 complaints</span>
+        </div>
+
+        <div id="complaintsList">
+
+            <div class="empty-state">
+                <div>🕊️</div>
+                <p>No complaints yet.</p>
+                <small>
+                    wow good job hai ye to mera crazy
+                </small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        made with questionable choices
+    </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+```
+
+</body>
+</html>
